@@ -1,5 +1,8 @@
 package io.hajnal.david.sentinel.worker.strategy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.opencv.core.Mat;
 import org.springframework.stereotype.Component;
 
