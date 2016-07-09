@@ -28,7 +28,7 @@ public class OpenCVCameraImpl implements Camera, AutoCloseable {
 	}
 
 	public Mat getFrame() {
-		if (!camera.isOpened()) {
+		if (camera == null || !camera.isOpened()) {
 			open();
 		}
 		Mat frame = new Mat();

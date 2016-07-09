@@ -4,12 +4,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.opencv.core.Mat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import io.hajnal.david.sentinel.util.Frame;
 import io.hajnal.david.sentinel.worker.strategy.AbstractWorkerStrategy;
 
 @Component
@@ -27,7 +27,7 @@ public class ThreadWorker implements Worker {
 	}
 
 	@Override
-	public void execute(Mat frame) {
+	public void execute(Frame frame) {
 		try {
 			ExecutorService executor = Executors.newSingleThreadExecutor();
 			setTimeout(executor);

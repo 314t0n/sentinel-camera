@@ -6,6 +6,8 @@ import java.util.List;
 import org.opencv.core.Mat;
 import org.springframework.stereotype.Component;
 
+import io.hajnal.david.sentinel.util.Frame;
+
 @Component
 public class DecoratedWorkerStrategy extends AbstractWorkerStrategy {
 
@@ -16,7 +18,7 @@ public class DecoratedWorkerStrategy extends AbstractWorkerStrategy {
 	}
 
 	@Override
-	public void execute(Mat frame) {
+	public void execute(Frame frame) {
 		strategies.forEach(s -> s.execute(frame));
 	}
 

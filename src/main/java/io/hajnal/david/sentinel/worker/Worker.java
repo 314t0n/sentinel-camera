@@ -1,8 +1,8 @@
 package io.hajnal.david.sentinel.worker;
 
-import org.opencv.core.Mat;
+import io.hajnal.david.sentinel.util.Frame;
 
 public interface Worker {
 
-	void execute(Mat frame);
+	void execute(Frame frame);
 }
