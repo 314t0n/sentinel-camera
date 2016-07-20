@@ -1,27 +1,86 @@
 package io.hajnal.david.sentinel.module;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.test.context.ContextConfiguration;
 
-import io.hajnal.david.sentinel.config.WorkerConfig;
+import io.hajnal.david.sentinel.util.Frame;
+import io.hajnal.david.sentinel.worker.Worker;
 import junit.framework.Assert;
 
 @RunWith(MockitoJUnitRunner.class)
-@ContextConfiguration(classes = WorkerConfig.class)
 public class TestTickEventModule {
 
 	private static final int LARGE_INT = 200_000_000 + 200_000_000;
 	private static final int FRAMES = 5;
 
 	private TickEventModule underTest;
+	private Worker worker;
 
 	@Before
 	public void setup() {
 		underTest = new TickEventModule(FRAMES);
+		worker = Mockito.mock(Worker.class);
+		underTest.setWorker(worker);
+	}
+	
+	@Test
+	public void workerExcetuteShouldCalledWhenFrameNumberEqualsCounter() {
+		// Given
+		for (int i = 0; i < FRAMES; i++) {
+			underTest.tickEvent();
+		}
+		// When
+		underTest.execute(null);
+		// Then
+		verify(worker, times(1)).execute(null);
+	}
+	
+	@Test
+	public void workerExcetuteShouldCalledWithFrameWhenFrameNumberEqualsCounter() {
+		// Given
+		for (int i = 0; i < FRAMES; i++) {
+			underTest.tickEvent();
+		}
+		Frame frame = Mockito.mock(Frame.class);
+		// When
+		underTest.execute(frame);
+		// Then
+		verify(worker, times(1)).execute(frame);
+	}
+	
+
+	@Test
+	public void isExcetuteShouldReturnFalseWhenModuleWasNotActiveWhileTickEventHappened() {
+		// Given
+		underTest.setActive(false);
+		for (int i = 0; i < FRAMES; i++) {
+			underTest.tickEvent();
+		}
+		underTest.setActive(true);
+		// When
+		boolean result = underTest.isExecute();
+		// Then
+		Assert.assertFalse(result);
+	}
+
+
+	@Test
+	public void isExcetuteShouldReturnFalseWhenModuleIsNotActive() {
+		// Given
+		underTest.setActive(false);
+		for (int i = 0; i < FRAMES; i++) {
+			underTest.tickEvent();
+		}
+		// When
+		boolean result = underTest.isExecute();
+		// Then
+		Assert.assertFalse(result);
 	}
 
 	@Test

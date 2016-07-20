@@ -38,12 +38,18 @@ public class TickEventModule implements SentinelModule {
 
 	@Override
 	public void tickEvent() {
-		tick++;
+		if (active) {
+			tick++;
+		}
 	}
 
 	@Override
 	public void execute(Frame frame) {
 		worker.execute(frame);
+	}
+
+	public void setWorker(Worker worker) {
+		this.worker = worker;
 	}
 
 }
