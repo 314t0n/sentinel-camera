@@ -5,8 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import io.hajnal.david.sentinel.communication.Socket.AbstractSocketFactory;
-import io.hajnal.david.sentinel.communication.Socket.ClientSocket;
+import io.hajnal.david.sentinel.communication.message.Message;
+import io.hajnal.david.sentinel.communication.socket.AbstractSocketFactory;
+import io.hajnal.david.sentinel.communication.socket.ClientSocket;
 
 @Component
 public class SocketConnection implements ServerConnection {

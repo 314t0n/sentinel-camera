@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import io.hajnal.david.sentinel.communication.message.Message;
 import io.hajnal.david.sentinel.config.WorkerConfig;
 
 @RunWith(MockitoJUnitRunner.class)

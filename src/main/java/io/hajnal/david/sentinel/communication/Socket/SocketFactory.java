@@ -1,4 +1,4 @@
-package io.hajnal.david.sentinel.communication.Socket;
+package io.hajnal.david.sentinel.communication.socket;
 
 import java.io.IOException;
 import java.net.UnknownHostException;

@@ -1,4 +1,4 @@
-package io.hajnal.david.sentinel.communication;
+package io.hajnal.david.sentinel.communication.message;
 
 import java.io.IOException;
 
@@ -50,6 +50,7 @@ public class Message<T> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+		@SuppressWarnings("rawtypes")
 		Message other = (Message) obj;
 		if (id == null) {
 			if (other.id != null)
