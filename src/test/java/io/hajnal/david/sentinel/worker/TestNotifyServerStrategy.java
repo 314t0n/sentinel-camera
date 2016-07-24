@@ -65,6 +65,7 @@ public class TestNotifyServerStrategy {
 	@Test(expected = NullPointerException.class)
 	public void saveImageShouldThrowNullPointerExceptionWhenFrameIsNull() {
 		// Given
+		when(messageFactory.createMessage(null)).thenThrow(NullPointerException.class);
 		// When
 		underTest.execute(null);
 		// Then

@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import org.opencv.core.Mat;
 import org.springframework.stereotype.Component;
 
-@Component
 public interface Storage {
 	
 	void saveImage(Mat frame, LocalDateTime timestamp);

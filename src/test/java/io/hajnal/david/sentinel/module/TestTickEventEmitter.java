@@ -27,7 +27,7 @@ public class TestTickEventEmitter {
 	private static final int SECOND_IN_MILLIS = 1000;
 	private static final int FRAMES_PER_SECOND = 30;
 	private TickEventEmitter underTest;
-	private Timer timer;
+	private Timer timer; 
 
 	@Before
 	public void setup() {
@@ -54,7 +54,7 @@ public class TestTickEventEmitter {
 		// Given
 		@SuppressWarnings("unchecked")
 		Callable<Void> callable = Mockito.mock(Callable.class);
-		underTest.onTickEvent(callable);
+		underTest.onEvent(callable);
 		// When
 		underTest.start();
 		schedule(new StopTask(underTest), FRAMES_PER_SECOND * 3);
@@ -68,7 +68,7 @@ public class TestTickEventEmitter {
 		// Given
 		@SuppressWarnings("unchecked")
 		Callable<Void> callable = Mockito.mock(Callable.class);
-		underTest.onTickEvent(callable);
+		underTest.onEvent(callable);
 		// When
 		underTest.start();
 		schedule(new StopTask(underTest), FRAMES_PER_SECOND - 1);
@@ -82,7 +82,7 @@ public class TestTickEventEmitter {
 		// Given
 		@SuppressWarnings("unchecked")
 		Callable<Void> callable = Mockito.mock(Callable.class);
-		underTest.onTickEvent(callable);
+		underTest.onEvent(callable);
 		// When
 		underTest.start();
 		schedule(new StopTask(underTest), SECOND_IN_MILLIS);

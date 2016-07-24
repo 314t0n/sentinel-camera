@@ -5,7 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FileStorage implements Storage {
 
 	public static final String FILENAME_PREFIX = "log_";

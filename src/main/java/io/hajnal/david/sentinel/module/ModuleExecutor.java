@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import io.hajnal.david.sentinel.util.Camera;
 
 @Component
-public class ModuleExecutor implements Callable<Void>, ModuleHandler {
+public class ModuleExecutor implements ModuleHandler {
 
 	public static final String MODULE_ALREADY_ADDED = "Module already added!";
 	private Map<String, SentinelModule> modules;

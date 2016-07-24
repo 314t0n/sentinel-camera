@@ -11,6 +11,10 @@ public class OpenCVCameraImpl implements Camera, AutoCloseable {
 
 	private int cameraId;
 	private VideoCapture camera;
+	
+	public OpenCVCameraImpl() {
+		this(0);
+	}
 
 	public OpenCVCameraImpl(int cameraId) {
 		this.cameraId = cameraId;

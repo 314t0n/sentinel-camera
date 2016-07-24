@@ -7,7 +7,7 @@ import java.util.concurrent.Callable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TickEventEmitter implements Runner {
+public class TickEventEmitter implements EventEmitter {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TickEventEmitter.class);
 
@@ -21,7 +21,7 @@ public class TickEventEmitter implements Runner {
 		timer = new Timer();
 	}
 
-	public void onTickEvent(Callable<Void> callable) {
+	public void onEvent(Callable<Void> callable) {
 		callTask = new CallTask(callable);
 	}
 

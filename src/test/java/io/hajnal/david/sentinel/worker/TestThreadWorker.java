@@ -24,11 +24,12 @@ public class TestThreadWorker {
 	private AbstractWorkerStrategy strategy;
 
 	@Test
-	public void strategyExecuteIsCalledWhenExecuteIsCalled() {
+	public void strategyExecuteIsCalledWhenExecuteIsCalled() throws InterruptedException {
 		// Given
 
 		// When
 		underTest.execute(null);
+		Thread.sleep(100);
 		// Then
 		verify(strategy, times(1)).execute(null);
 	}

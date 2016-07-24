@@ -1,32 +1,29 @@
 package io.hajnal.david.sentinel.module;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class TickEventModuleRunner implements ModuleRunner {
+@Component
+public class TickEventModuleRunner implements Runner {
 
-	private Map<String, SentinelModule> modules;
+	private final ModuleHandler moduleHandler;
+	private final TickEventEmitter eventEmitter;
 
-	public TickEventModuleRunner() {
-		this.modules = new HashMap<>();
+	@Autowired
+	public TickEventModuleRunner(ModuleHandler moduleRunner, TickEventEmitter eventEmitter) {
+		this.moduleHandler = moduleRunner;
+		this.eventEmitter = eventEmitter;
 	}
 
 	@Override
 	public void start() {
-		modules.forEach((id, module) -> {
-			module.execute(null);
-		});
+		eventEmitter.onEvent(moduleHandler);
+		eventEmitter.start();
 	}
 
 	@Override
 	public void stop() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void addModule(String moduleId, SentinelModule module) {
-		modules.put(moduleId, module);
+		eventEmitter.stop();
 	}
 
 }
