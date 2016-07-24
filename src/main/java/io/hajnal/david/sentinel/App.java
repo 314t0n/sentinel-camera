@@ -31,8 +31,8 @@ public class App {
 			camera.open();
 			for (int i = 0; i < 600; i++) {
 				final int v = i;
-				final Mat frame = camera.getFrame();
-
+				final Mat frame = camera.getRawFrame();
+ 
 				MatOfByte buffer = new MatOfByte();
 				Imgcodecs.imencode(".png", frame, buffer);
 

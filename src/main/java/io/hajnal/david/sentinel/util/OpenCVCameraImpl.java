@@ -1,5 +1,7 @@
 package io.hajnal.david.sentinel.util;
 
+import java.time.LocalDateTime;
+
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 import org.springframework.stereotype.Component;
@@ -27,13 +29,23 @@ public class OpenCVCameraImpl implements Camera, AutoCloseable {
 		camera = new VideoCapture(cameraId);
 	}
 
-	public Mat getFrame() {
+	private Mat readFrame() {
 		if (camera == null || !camera.isOpened()) {
 			open();
 		}
 		Mat frame = new Mat();
 		camera.read(frame);
 		return frame;
+	}
+
+	@Override
+	public Mat getRawFrame() {
+		return readFrame();
+	}
+
+	@Override
+	public Frame getFrame() {
+		return new Frame(LocalDateTime.now(), readFrame());
 	}
 
 }

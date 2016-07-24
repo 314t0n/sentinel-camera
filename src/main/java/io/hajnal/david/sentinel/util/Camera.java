@@ -5,6 +5,7 @@ import org.opencv.core.Mat;
 public interface Camera {
 	
 	void open();
-	Mat getFrame();
+	Mat getRawFrame();
+	Frame getFrame();
 
 }
