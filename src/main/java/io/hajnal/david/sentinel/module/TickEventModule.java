@@ -1,21 +1,31 @@
 package io.hajnal.david.sentinel.module;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Component;
 
 import io.hajnal.david.sentinel.util.Frame;
+import io.hajnal.david.sentinel.worker.ThreadWorker;
 import io.hajnal.david.sentinel.worker.Worker;
 
 @Component
 public class TickEventModule implements SentinelModule {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(TickEventModule.class);
+
+	public static final int DEFAULT_FPS = 30;
 	private boolean active;
 	private int tick;
 	private int numberOfSkippedFrames;
 
 	@Autowired
 	private Worker worker;
+
+	public TickEventModule() {
+		this(DEFAULT_FPS);
+	}
 
 	public TickEventModule(int numberOfSkippedFrames) {
 		this.numberOfSkippedFrames = numberOfSkippedFrames;
@@ -52,4 +62,8 @@ public class TickEventModule implements SentinelModule {
 		this.worker = worker;
 	}
 
+	public void setNumberOfSkippedFrames(int numberOfSkippedFrames) {
+		this.numberOfSkippedFrames = numberOfSkippedFrames;
+	}
+	
 }

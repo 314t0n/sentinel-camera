@@ -21,15 +21,18 @@ public class ThreadWorker implements Worker {
 
 	private AbstractWorkerStrategy workerStrategy;
 
+	private ExecutorService executor;
+
 	@Autowired
 	public ThreadWorker(AbstractWorkerStrategy workerStrategy) {
 		this.workerStrategy = workerStrategy;
+		executor = Executors.newFixedThreadPool(2);
 	}
 
 	@Override
 	public void execute(Frame frame) {
 		try {
-			ExecutorService executor = Executors.newSingleThreadExecutor();
+			LOGGER.debug("execute" + Thread.currentThread().getName());
 			setTimeout(executor);
 			executor.submit(() -> {
 				workerStrategy.execute(frame);

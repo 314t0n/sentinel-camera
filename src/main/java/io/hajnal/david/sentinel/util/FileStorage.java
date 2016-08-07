@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class FileStorage implements Storage {
 
 	public static final String FILENAME_PREFIX = "log_";
-	public static final String TIMESTAMP_FORMAT = "yyyy_MM_dd_HH_mm_ss";
+	public static final String TIMESTAMP_FORMAT = "yyyy_MM_dd__HH_mm_ss.SS";
 	public static final String FILETYPE = ".jpg";
 
 	private String path;
@@ -43,8 +43,7 @@ public class FileStorage implements Storage {
 
 	@Override
 	public Mat readImage(LocalDateTime timeStamp) {
-		return Imgcodecs.imread(getFileNameFromTimestamp(timeStamp));		
-		
+		return Imgcodecs.imread(getFileNameFromTimestamp(timeStamp));				
 	}
 
 	@Override

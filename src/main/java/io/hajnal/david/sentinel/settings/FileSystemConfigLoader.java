@@ -15,7 +15,7 @@ public class FileSystemConfigLoader implements SystemConfigLoader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileSystemConfigLoader.class);
 
 	private ObjectMapper mapper;
-
+	
 	public FileSystemConfigLoader() {
 		mapper = new ObjectMapper();
 	}

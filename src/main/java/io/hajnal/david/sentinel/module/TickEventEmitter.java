@@ -28,7 +28,7 @@ public class TickEventEmitter implements EventEmitter {
 	@Override
 	public void start() {
 		try {
-			timer.scheduleAtFixedRate(callTask, 0, SECOND_IN_MILLIS / tickPerSecond);
+			timer.scheduleAtFixedRate(callTask, 1000, SECOND_IN_MILLIS / tickPerSecond);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage(), ex);
 			throw new RuntimeException(ex.getMessage());

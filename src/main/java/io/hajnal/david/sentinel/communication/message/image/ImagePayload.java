@@ -1,6 +1,8 @@
-package io.hajnal.david.sentinel.communication.message;
+package io.hajnal.david.sentinel.communication.message.image;
 
 import java.time.LocalDateTime;
+
+import io.hajnal.david.sentinel.communication.message.Payload;
 
 public class ImagePayload extends Payload {
 

@@ -26,6 +26,7 @@ public class FileStorageWorkerStrategy extends AbstractWorkerStrategy {
 			storage.saveImage(frame.getFrame(), frame.getTimestamp());
 //		} catch (Exception ex) {
 //			LOGGER.error(ex.getMessage(), ex);
+//			throw new RuntimeException(ex.getMessage());
 //		}
 	}
 
