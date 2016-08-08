@@ -14,9 +14,14 @@ public class NotifyServerWorkerStrategy<T extends Message<E>, E> extends Abstrac
 	private static final Logger LOGGER = LoggerFactory.getLogger(NotifyServerWorkerStrategy.class);
 
 	private AbstractMessageFactory<T, E> messageFactory;
-	
-	@Autowired
+
 	private ServerConnection connection;
+
+	public NotifyServerWorkerStrategy(AbstractMessageFactory<T, E> messageFactory, ServerConnection connection) {
+		super();
+		this.messageFactory = messageFactory;
+		this.connection = connection;
+	}
 
 	@Override
 	public void execute(Frame frame) {

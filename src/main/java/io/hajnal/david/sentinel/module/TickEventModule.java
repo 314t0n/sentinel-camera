@@ -10,7 +10,6 @@ import io.hajnal.david.sentinel.util.Frame;
 import io.hajnal.david.sentinel.worker.ThreadWorker;
 import io.hajnal.david.sentinel.worker.Worker;
 
-@Component
 public class TickEventModule implements SentinelModule {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TickEventModule.class);
@@ -20,7 +19,6 @@ public class TickEventModule implements SentinelModule {
 	private int tick;
 	private int numberOfSkippedFrames;
 
-	@Autowired
 	private Worker worker;
 
 	public TickEventModule() {

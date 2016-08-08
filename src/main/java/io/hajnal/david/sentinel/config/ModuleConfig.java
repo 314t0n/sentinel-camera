@@ -12,6 +12,7 @@ import io.hajnal.david.sentinel.module.ModuleHandler;
 import io.hajnal.david.sentinel.module.TickEventEmitter;
 import io.hajnal.david.sentinel.module.TickEventModule;
 import io.hajnal.david.sentinel.module.TickEventModuleRunner;
+import io.hajnal.david.sentinel.settings.FileSystemConfigLoader;
 import io.hajnal.david.sentinel.util.Camera;
 import io.hajnal.david.sentinel.worker.Worker;
 
@@ -39,7 +40,7 @@ public class ModuleConfig {
 		ModuleExecutor moduleExecutor = new ModuleExecutor(camera);
 		imagelogModule.setNumberOfSkippedFrames(30*5); //every five seconds
 		motionDetectModule.setNumberOfSkippedFrames(3); // every frame
-//		moduleExecutor.addModule("imagelog", imagelogModule);
+		moduleExecutor.addModule("imagelog", imagelogModule);
 		moduleExecutor.addModule("motionDetect", motionDetectModule);
 		return moduleExecutor;
 	}

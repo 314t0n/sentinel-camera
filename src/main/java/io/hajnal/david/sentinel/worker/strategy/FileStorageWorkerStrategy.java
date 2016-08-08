@@ -8,14 +8,12 @@ import org.springframework.stereotype.Component;
 import io.hajnal.david.sentinel.util.Frame;
 import io.hajnal.david.sentinel.util.Storage;
 
-@Component
 public class FileStorageWorkerStrategy extends AbstractWorkerStrategy {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileStorageWorkerStrategy.class);
 
 	private Storage storage;
 
-	@Autowired
 	public FileStorageWorkerStrategy(Storage storage) {
 		this.storage = storage;
 	}

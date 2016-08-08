@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import io.hajnal.david.sentinel.util.Frame;
 import io.hajnal.david.sentinel.worker.strategy.AbstractWorkerStrategy;
 
-@Component
 public class ThreadWorker implements Worker {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ThreadWorker.class);
@@ -23,7 +22,6 @@ public class ThreadWorker implements Worker {
 
 	private ExecutorService executor;
 
-	@Autowired
 	public ThreadWorker(AbstractWorkerStrategy workerStrategy) {
 		this.workerStrategy = workerStrategy;
 		executor = Executors.newFixedThreadPool(2);

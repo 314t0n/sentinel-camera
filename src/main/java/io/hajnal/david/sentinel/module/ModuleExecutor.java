@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import io.hajnal.david.sentinel.util.Camera;
 import io.hajnal.david.sentinel.util.Frame;
 
-@Component
 public class ModuleExecutor implements ModuleHandler {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ModuleExecutor.class);
@@ -25,7 +24,6 @@ public class ModuleExecutor implements ModuleHandler {
 
 	private Camera camera;
 
-	@Autowired
 	public ModuleExecutor(Camera camera) {
 		this.modules = new HashMap<>();
 		this.camera = camera;

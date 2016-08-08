@@ -7,17 +7,17 @@ import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.springframework.stereotype.Component;
 
-@Component
 public class FileStorage implements Storage {
 
-	public static final String FILENAME_PREFIX = "log_";
+	public final String fileNamePrefix;
 	public static final String TIMESTAMP_FORMAT = "yyyy_MM_dd__HH_mm_ss.SS";
 	public static final String FILETYPE = ".jpg";
 
 	private String path;
 
-	public FileStorage(String path) {
+	public FileStorage(String path, String prefix) {
 		setPath(path);
+		this.fileNamePrefix = prefix + "_";
 	}
 
 	public void setPath(String path) {
@@ -35,7 +35,7 @@ public class FileStorage implements Storage {
 	public String getFileNameFromTimestamp(LocalDateTime timeStamp) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(path);
-		sb.append(FILENAME_PREFIX);
+		sb.append(fileNamePrefix);
 		sb.append(timeStamp.format(DateTimeFormatter.ofPattern(TIMESTAMP_FORMAT)));
 		sb.append(FILETYPE);
 		return sb.toString();

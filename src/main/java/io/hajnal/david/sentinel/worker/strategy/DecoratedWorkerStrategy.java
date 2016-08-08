@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import io.hajnal.david.sentinel.util.Frame;
 
-@Component
 public class DecoratedWorkerStrategy extends AbstractWorkerStrategy {
 
 	private List<AbstractWorkerStrategy> strategies;
